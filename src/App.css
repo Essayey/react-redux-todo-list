@@ -1,0 +1,23 @@
+.Container{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.TodoItem{
+  padding: 15px 10px;
+  border: 1px solid orange;
+  border-radius: 10px;
+  width: 400px;
+  min-height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.TodoItem__check{
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
