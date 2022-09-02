@@ -1,21 +1,24 @@
 import React, { useState } from 'react'
 
-const TodoItem = ({ text, checked }) => {
+const TodoItem = ({ text, checked, index, editTodo, deleteTodo, checkTodo }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [value, setValue] = useState(text);
-    // MOCK CHECK STATE
-    const [checkedState, setCheckedState] = useState(checked);
 
     const edit = () => {
         setIsEditing(true);
     }
     const save = () => {
+        editTodo(value, index);
         setIsEditing(false);
-        // Call dispatch
     }
     const check = () => {
-        setCheckedState(prev => !prev)
+        checkTodo(index)
     }
+    const remove = () => {
+        setIsEditing(false);
+        deleteTodo(index);
+    }
+    console.log(text, index)
 
     return (
         <div className='TodoItem'>
@@ -23,13 +26,13 @@ const TodoItem = ({ text, checked }) => {
             {isEditing
                 ? <input value={value} onChange={e => setValue(e.target.value)}></input>
                 : <div className='TodoItem__check'>
-                    <input onChange={check}defaultChecked={checkedState} type="checkbox" />
-                    <p style={{textDecoration: checkedState ? 'line-through' : '' }}>{text}</p>
+                    <input onChange={check} checked={checked} type="checkbox" />
+                    <p style={{textDecoration: checked ? 'line-through' : '' }}>{text}</p>
                     </div>
             }
 
             <div className='TodoItem__buttons'>
-                <button>Удалить</button>
+                <button onClick={remove}>Удалить</button>
                 {isEditing
                     ? <button onClick={save}>Сохранить</button>
                     : <button onClick={edit}>Редактировать</button>
