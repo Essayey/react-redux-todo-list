@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const TodoItem = ({ text, checked, index, editTodo, deleteTodo, checkTodo }) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -18,7 +18,8 @@ const TodoItem = ({ text, checked, index, editTodo, deleteTodo, checkTodo }) => 
         setIsEditing(false);
         deleteTodo(index);
     }
-    console.log(text, index)
+
+
 
     return (
         <div className='TodoItem'>
