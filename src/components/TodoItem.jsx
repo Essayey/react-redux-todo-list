@@ -25,7 +25,7 @@ const TodoItem = ({ text, checked }) => {
                 : <div className='TodoItem__check'>
                     <input onChange={check}defaultChecked={checkedState} type="checkbox" />
                     <p style={{textDecoration: checkedState ? 'line-through' : '' }}>{text}</p>
-                </div>
+                    </div>
             }
 
             <div className='TodoItem__buttons'>
@@ -34,8 +34,6 @@ const TodoItem = ({ text, checked }) => {
                     ? <button onClick={save}>Сохранить</button>
                     : <button onClick={edit}>Редактировать</button>
                 }
-
-
             </div>
         </div>
     )

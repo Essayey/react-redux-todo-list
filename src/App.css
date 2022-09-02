@@ -1,13 +1,33 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .Container{
   max-width: 1200px;
   margin: 0 auto;
 }
 
+.TodoList{
+  width: 500px;
+}
+
+.TodoList__form{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid orange;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+
 .TodoItem{
   padding: 15px 10px;
   border: 1px solid orange;
   border-radius: 10px;
-  width: 400px;
+  width: 100%;
   min-height: 50px;
 
   display: flex;
@@ -16,8 +36,16 @@
   margin-bottom: 10px;
 }
 
+.TodoItem button + button{
+  margin-left: 5px;
+}
+
+
 .TodoItem__check{
   height: 100%;
   display: flex;
   align-items: center;
+}
+.TodoItem__check input{
+  margin: 10px;
 }
