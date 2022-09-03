@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import TodoItem from './TodoItem'
 import { useDispatch, useSelector } from 'react-redux';
-import { ADD_TODO, CHECK_TODO, DELETE_TODO, EDIT_TODO } from '../store/index'
+import { ADD_TODO, CHECK_TODO, DELETE_TODO, doAddTodo, doCheckTodo, doDeleteTodo, doEditTodo, EDIT_TODO } from '../store/index'
 
 const TodoList = () => {
     const dispatch = useDispatch();
@@ -27,20 +27,20 @@ const TodoList = () => {
 
     const addTodo = () => {
         setFormValue('');
-        dispatch({ type: ADD_TODO, payload: formValue })
+        dispatch(doAddTodo(formValue));
     }
 
     const editTodo = (text, index) => {
-        dispatch({ type: EDIT_TODO, payload: { text, index } })
+        dispatch(doEditTodo({ text, index }))
     }
 
     const deleteTodo = (index) => {
-        dispatch({type: DELETE_TODO, payload: index})
+        dispatch(doDeleteTodo(index))
     }
 
 
     const checkTodo = (index) => {
-        dispatch({type: CHECK_TODO, payload: index})
+        dispatch(doCheckTodo(index))
     }
 
 

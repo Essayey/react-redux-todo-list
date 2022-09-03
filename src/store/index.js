@@ -38,3 +38,7 @@ const todoReducer = (state = initialState, action) => {
 }
 
 export const store = createStore(todoReducer);
+export const doAddTodo = payload => ({type: ADD_TODO, payload});
+export const doEditTodo = payload => ({type: EDIT_TODO, payload});
+export const doDeleteTodo = payload => ({type: DELETE_TODO, payload});
+export const doCheckTodo = payload => ({type: CHECK_TODO, payload});
