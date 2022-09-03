@@ -7,10 +7,27 @@ import { ADD_TODO, CHECK_TODO, DELETE_TODO, EDIT_TODO } from '../store/index'
 const TodoList = () => {
     const dispatch = useDispatch();
     const todos = useSelector(state => state.todos)
-    const [value, setValue] = useState('');
+    const [formValue, setFormValue] = useState('');
+    const [checkedAmount, setCheckedAmount] = useState(calculateCheckedAmount());
+
+    function calculateCheckedAmount(){
+        return todos.reduce((amount, todo) => {
+            if(todo.checked) return amount + 1;
+            return amount;
+        }, 0)
+    }
+
+    const incrementCheckedAmount = () => {
+        setCheckedAmount(prev => prev + 1);
+    }
+
+    const decrementCheckedAmount = () => {
+        setCheckedAmount(prev => prev - 1);
+    }
+
     const addTodo = () => {
-        setValue('');
-        dispatch({ type: ADD_TODO, payload: value })
+        setFormValue('');
+        dispatch({ type: ADD_TODO, payload: formValue })
     }
 
     const editTodo = (text, index) => {
@@ -30,6 +47,8 @@ const TodoList = () => {
 
     return (
         <div className='TodoList'>
+            <h1 className='TodoList__header'>Todo list</h1>
+            <div className='TodoList__progress'>Completed {checkedAmount} out of {todos.length}</div>
             {todos.map((todo, index) =>
                 <TodoItem
                     text={todo.text}
@@ -39,10 +58,11 @@ const TodoList = () => {
                     deleteTodo={deleteTodo}
                     checkTodo={checkTodo}
                     key={todo.text + index}
-                    length={todos.length}/>
+                    incrementCheckedAmount={incrementCheckedAmount}
+                    decrementCheckedAmount={decrementCheckedAmount}/>
             )}
             <div className='TodoList__form'>
-                <input value={value} onChange={e => setValue(e.target.value)} type="text" />
+                <input value={formValue} onChange={e => setFormValue(e.target.value)} type="text" />
                 <button onClick={addTodo}>Добавить</button>
             </div>
         </div>
