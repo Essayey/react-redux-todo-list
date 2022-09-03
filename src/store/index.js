@@ -14,7 +14,6 @@ export const DELETE_TODO = 'REMOVE_TODO';
 export const CHECK_TODO = 'CHECK_TODO';
 
 const todoReducer = (state = initialState, action) => {
-    let newState = state;
     switch (action.type) {
         case ADD_TODO:
             return { todos: [...state.todos, { text: action.payload, checked: false }] }
