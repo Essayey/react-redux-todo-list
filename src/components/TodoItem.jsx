@@ -1,42 +1,40 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const TodoItem = ({ text, checked, index, editTodo, deleteTodo, checkTodo }) => {
     const [isEditing, setIsEditing] = useState(false);
-    const [value, setValue] = useState(text);
+    const editValueRef = useRef();
 
-    const edit = () => {
+    const editHandle = () => {
         setIsEditing(true);
     }
-    const save = () => {
-        editTodo(value, index);
+    const saveHandle = () => {
+        editTodo(editValueRef.current.value, index);
         setIsEditing(false);
     }
-    const check = () => {
+    const checkHandle = () => {
         checkTodo(index)
     }
-    const remove = () => {
+    const deleteHandle = () => {
         setIsEditing(false);
         deleteTodo(index);
     }
-
-
 
     return (
         <div className='TodoItem'>
 
             {isEditing
-                ? <input value={value} onChange={e => setValue(e.target.value)}></input>
+                ? <input ref={editValueRef} defaultValue={text}></input>
                 : <div className='TodoItem__check'>
-                    <input onChange={check} checked={checked} type="checkbox" />
+                    <input onChange={checkHandle} checked={checked} type="checkbox" />
                     <p style={{textDecoration: checked ? 'line-through' : '' }}>{text}</p>
                     </div>
             }
 
             <div className='TodoItem__buttons'>
-                <button onClick={remove}>Удалить</button>
+                <button onClick={deleteHandle}>Удалить</button>
                 {isEditing
-                    ? <button onClick={save}>Сохранить</button>
-                    : <button onClick={edit}>Редактировать</button>
+                    ? <button onClick={saveHandle}>Сохранить</button>
+                    : <button onClick={editHandle}>Редактировать</button>
                 }
             </div>
         </div>

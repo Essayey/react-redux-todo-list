@@ -38,7 +38,8 @@ const TodoList = () => {
                     editTodo={editTodo}
                     deleteTodo={deleteTodo}
                     checkTodo={checkTodo}
-                    key={todo + index} />
+                    key={todo.text + index}
+                    length={todos.length}/>
             )}
             <div className='TodoList__form'>
                 <input value={value} onChange={e => setValue(e.target.value)} type="text" />
