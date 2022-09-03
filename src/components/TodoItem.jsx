@@ -3,7 +3,6 @@ import React, { useRef, useState } from 'react'
 const TodoItem = ({ text, checked, index, editTodo, deleteTodo, checkTodo, incrementCheckedAmount, decrementCheckedAmount }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [editValue, setEditValue] = useState(text);
-    const [textAreaRows, setTextAreaRows] = useState(2);
 
     const editHandle = () => {
         setIsEditing(true);
@@ -35,7 +34,6 @@ const TodoItem = ({ text, checked, index, editTodo, deleteTodo, checkTodo, incre
                 }
 
             </div>
-
 
             <div className='TodoItem__buttons'>
                 <button onClick={deleteHandle}>Удалить</button>
