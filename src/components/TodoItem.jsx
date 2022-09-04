@@ -37,10 +37,10 @@ const TodoItem = ({ text, checked, index, editTodo, deleteTodo, checkTodo, incre
             </div>
 
             <div className='TodoItem__buttons'>
-                <Button variant='secondary' onClick={deleteHandle}>Удалить</Button>
+                <Button variant='secondary' onClick={deleteHandle}>Delete</Button>
                 {isEditing
-                    ? <Button variant='primary' onClick={saveHandle}>Сохранить</Button>
-                    : <Button variant='primary' onClick={editHandle}>Редактировать</Button>
+                    ? <Button variant='primary' onClick={saveHandle}>Save</Button>
+                    : <Button variant='primary' onClick={editHandle}>Edit</Button>
                 }
             </div>
         </div>

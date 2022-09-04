@@ -64,7 +64,7 @@ const TodoList = () => {
             )}
             <div className='TodoList__form'>
                 <input value={formValue} onChange={e => setFormValue(e.target.value)} type="text" />
-                <Button variant='primary' onClick={addTodo}>Добавить</Button>
+                <Button variant='primary' onClick={addTodo}>Add todo</Button>
             </div>
         </div>
     )
