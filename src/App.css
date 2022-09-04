@@ -1,21 +1,21 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Segoe UI", SegoeUI, "Helvetica Neue";
 }
 
-.Container{
+.Container {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.TodoList{
+.TodoList {
   margin: 0 auto;
-  width: 500px;
+  width: 800px;
 }
 
-.TodoList__form{
+.TodoList__form {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,7 +26,7 @@
 
 
 
-.TodoItem{
+.TodoItem {
   padding: 15px 10px;
   border: 1px solid orange;
   border-radius: 10px;
@@ -39,40 +39,43 @@
   margin-bottom: 10px;
 }
 
-.TodoItem button + button{
+.TodoItem button+button {
   margin-left: 5px;
 }
 
 
-.TodoItem__inner{
+.TodoItem__inner {
   font-size: 18px;
   height: 100%;
   display: flex;
   align-items: center;
   max-width: 60%;
-  
+
 }
-.TodoItem__inner input{
+
+.TodoItem__inner input {
   margin: 10px;
 }
-.TodoItem__text{
+
+.TodoItem__text {
   max-width: calc(100% - 20px);
   word-wrap: break-word;
   white-space: pre-wrap;
 }
-.TodoItem__editInput{
+
+.TodoItem__editInput {
   padding: 3px;
   font-size: 18px;
   resize: none;
 }
 
 
-.TodoList__header{
+.TodoList__header {
   text-align: center;
   margin-bottom: 10px;
 }
 
-.TodoList__progress{
+.TodoList__progress {
   text-align: right;
   margin-bottom: 10px;
 }

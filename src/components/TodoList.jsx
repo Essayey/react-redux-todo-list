@@ -3,6 +3,7 @@ import { useState } from 'react'
 import TodoItem from './TodoItem'
 import { useDispatch, useSelector } from 'react-redux';
 import { ADD_TODO, CHECK_TODO, DELETE_TODO, doAddTodo, doCheckTodo, doDeleteTodo, doEditTodo, EDIT_TODO } from '../store/index'
+import Button from './UI/Button/Button';
 
 const TodoList = () => {
     const dispatch = useDispatch();
@@ -10,9 +11,9 @@ const TodoList = () => {
     const [formValue, setFormValue] = useState('');
     const [checkedAmount, setCheckedAmount] = useState(calculateCheckedAmount());
 
-    function calculateCheckedAmount(){
+    function calculateCheckedAmount() {
         return todos.reduce((amount, todo) => {
-            if(todo.checked) return amount + 1;
+            if (todo.checked) return amount + 1;
             return amount;
         }, 0)
     }
@@ -59,11 +60,11 @@ const TodoList = () => {
                     checkTodo={checkTodo}
                     key={todo.text + index}
                     incrementCheckedAmount={incrementCheckedAmount}
-                    decrementCheckedAmount={decrementCheckedAmount}/>
+                    decrementCheckedAmount={decrementCheckedAmount} />
             )}
             <div className='TodoList__form'>
                 <input value={formValue} onChange={e => setFormValue(e.target.value)} type="text" />
-                <button onClick={addTodo}>Добавить</button>
+                <Button variant='primary' onClick={addTodo}>Добавить</Button>
             </div>
         </div>
     )

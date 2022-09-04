@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
+import Button from './UI/Button/Button';
 
 const TodoItem = ({ text, checked, index, editTodo, deleteTodo, checkTodo, incrementCheckedAmount, decrementCheckedAmount }) => {
     const [isEditing, setIsEditing] = useState(false);
@@ -29,17 +30,17 @@ const TodoItem = ({ text, checked, index, editTodo, deleteTodo, checkTodo, incre
             <div className='TodoItem__inner'>
                 <input onChange={checkHandle} checked={checked} type="checkbox" />
                 {isEditing
-                    ? <textarea rows={5} cols="30" className='TodoItem__editInput' value={editValue} onChange={e => setEditValue(e.target.value)}></textarea>
+                    ? <textarea rows={5} cols="1000" className='TodoItem__editInput' value={editValue} onChange={e => setEditValue(e.target.value)}></textarea>
                     : <pre className='TodoItem__text' style={{ textDecoration: checked ? 'line-through' : '' }}>{text}</pre>
                 }
 
             </div>
 
             <div className='TodoItem__buttons'>
-                <button onClick={deleteHandle}>Удалить</button>
+                <Button variant='secondary' onClick={deleteHandle}>Удалить</Button>
                 {isEditing
-                    ? <button onClick={saveHandle}>Сохранить</button>
-                    : <button onClick={editHandle}>Редактировать</button>
+                    ? <Button variant='primary' onClick={saveHandle}>Сохранить</Button>
+                    : <Button variant='primary' onClick={editHandle}>Редактировать</Button>
                 }
             </div>
         </div>
