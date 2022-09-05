@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import TodoItem from './TodoItem'
 import { useDispatch, useSelector } from 'react-redux';
-import { ADD_TODO, CHECK_TODO, DELETE_TODO, doAddTodo, doCheckTodo, doDeleteTodo, doEditTodo, EDIT_TODO } from '../store/index'
+import { doAddTodo, doCheckTodo, doDeleteTodo, doEditTodo } from '../store/index'
 import Button from './UI/Button/Button';
 
 const TodoList = () => {

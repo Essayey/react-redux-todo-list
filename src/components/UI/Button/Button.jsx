@@ -2,20 +2,22 @@ import React from 'react'
 import styles from './Button.module.css';
 
 const Button = ({ variant, onClick, children }) => {
-    let color;
+    let background;
+    let color = '#fff';
     switch (variant) {
         case 'primary':
-            color = '#26e04b';
+            background = '#26e04b';
             break;
         case 'secondary':
-            color = '#f57242';
+            background = '#f57242';
             break;
         default:
-            color = '#ffffff'
+            background = '#eee'
+            color = '#000'
             break;
     }
     return (
-        <button className={styles.Button} onClick={onClick} style={{ background: color }}>
+        <button className={styles.Button} onClick={onClick} style={{ background: background, color: color }}>
             {children}
         </button>
     )

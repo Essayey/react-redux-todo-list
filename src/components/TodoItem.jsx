@@ -1,7 +1,14 @@
 import React, { useState } from 'react'
 import Button from './UI/Button/Button';
 
-const TodoItem = ({ text, checked, index, editTodo, deleteTodo, checkTodo, incrementCheckedAmount, decrementCheckedAmount }) => {
+const TodoItem = ({ text,
+    checked,
+    index,
+    editTodo,
+    deleteTodo,
+    checkTodo,
+    incrementCheckedAmount,
+    decrementCheckedAmount }) => {
     const [isEditing, setIsEditing] = useState(false);
     const [editValue, setEditValue] = useState(text);
 

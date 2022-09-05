@@ -79,3 +79,42 @@
   text-align: right;
   margin-bottom: 10px;
 }
+
+.Navbar {
+  width: 100vw;
+  height: 60px;
+  background: #4287f5;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding: 10px;
+  gap: 10px;
+}
+
+.StaticTodo {
+  max-width: 1000px;
+  margin: 0 auto;
+
+}
+
+.StaticTodo h1 {
+  text-align: center;
+}
+
+.StaticTodoList {
+
+
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.StaticTodoList__list {
+
+  font-size: 18px;
+
+}
+
+.StaticTodoList__list li {
+  margin: 10px;
+}
