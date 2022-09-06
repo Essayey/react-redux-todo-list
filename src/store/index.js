@@ -1,4 +1,5 @@
-import { createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
+import { loggingMiddleware } from './middleware';
 
 const initialState = {
     todos: [
@@ -19,27 +20,31 @@ const todoReducer = (state = initialState, action) => {
             return { todos: [...state.todos, { text: action.payload, checked: false }] }
 
         case EDIT_TODO:
-            return {todos: state.todos.map((todo, index) => {
-                if (index === action.payload.index) return {text: action.payload.text, checked: todo.checked};
-                return todo;
-            })}
+            return {
+                todos: state.todos.map((todo, index) => {
+                    if (index === action.payload.index) return { text: action.payload.text, checked: todo.checked };
+                    return todo;
+                })
+            }
 
         case DELETE_TODO:
-            return {todos: state.todos.filter((_, index) => index !== action.payload)}
+            return { todos: state.todos.filter((_, index) => index !== action.payload) }
 
         case CHECK_TODO:
-            return {todos: state.todos.map((todo, index) => {
-                if (index === action.payload) return {text: todo.text, checked: !todo.checked};
-                return todo;
-            })}
-            
+            return {
+                todos: state.todos.map((todo, index) => {
+                    if (index === action.payload) return { text: todo.text, checked: !todo.checked };
+                    return todo;
+                })
+            }
+
         default:
             return state
     }
 }
 
-export const store = createStore(todoReducer);
-export const doAddTodo = payload => ({type: ADD_TODO, payload});
-export const doEditTodo = payload => ({type: EDIT_TODO, payload});
-export const doDeleteTodo = payload => ({type: DELETE_TODO, payload});
-export const doCheckTodo = payload => ({type: CHECK_TODO, payload});
+export const store = createStore(todoReducer, applyMiddleware(loggingMiddleware));
+export const doAddTodo = payload => ({ type: ADD_TODO, payload });
+export const doEditTodo = payload => ({ type: EDIT_TODO, payload });
+export const doDeleteTodo = payload => ({ type: DELETE_TODO, payload });
+export const doCheckTodo = payload => ({ type: CHECK_TODO, payload });
