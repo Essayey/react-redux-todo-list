@@ -5,7 +5,6 @@ const StaticTodo = () => {
     const todos = useSelector(state => state.todos);
     const uncheckedTodos = todos.filter((todo) => todo.checked === false)
     const checkedTodos = todos.filter((todo) => todo.checked === true)
-    console.log(uncheckedTodos)
 
     return (
         <div className='StaticTodo'>
